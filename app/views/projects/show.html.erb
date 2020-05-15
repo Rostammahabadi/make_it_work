@@ -1,0 +1,29 @@
+<h1> Project <%= @project.name %></h1>
+
+  <p><%= @project.name %></p>
+  <p>Material: <%= @project.material %></p>
+  <p>Challenge Theme: <%= @project.challenge.theme %></p>
+  <p>Number of Contestants: <%= @project.total_contestants %></p>
+  <p>Average Contestant Experience: <%= @project.average_year_of_experience %></p>
+
+
+    <%= form_tag "/contestants", method: :post do %>
+
+            <%= label_tag :name, nil, class: "col-3 light-text" %>
+            <%= text_field_tag :name, nil , class: "col-8" %>
+
+            <%= label_tag :age, nil, class: "col-3 light-text" %>
+            <%= text_field_tag :age, nil , class: "col-8" %>
+
+            <%= label_tag :hometown, nil, class: "col-3 light-text" %>
+            <%= text_field_tag :hometown, nil , class: "col-8" %>
+
+
+            <%= label_tag :years_of_experience, nil, class: "col-3 light-text" %>
+            <%= text_field_tag :years_of_experience, nil , class: "col-8", required: true %>
+
+            <%= hidden_field_tag :project_id,"#{@project.id}" %>
+
+            <%= submit_tag "Add Contestant to Project", class:"col-3" %>
+
+    <% end %>
